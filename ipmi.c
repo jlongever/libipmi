@@ -46,41 +46,41 @@ int csv_output = 0;
 int verbose = 0;
 
 struct ipmi_cmd ipmitool_cmd_list[] = {
-	{ ipmi_raw_main,     "raw",     "Send a RAW IPMI request and print response" },
-	{ ipmi_rawi2c_main,  "i2c",     "Send an I2C Master Write-Read command and print response" },
-	{ ipmi_rawspd_main,  "spd",     "Print SPD info from remote I2C device" },
-	{ ipmi_lanp_main,    "lan",     "Configure LAN Channels" },
-	{ ipmi_chassis_main, "chassis", "Get chassis status and set power state" },
-	{ ipmi_power_main,   "power",   "Shortcut to chassis power commands" },
-	{ ipmi_event_main,   "event",   "Send pre-defined events to MC" },
-	{ ipmi_mc_main,      "mc",      "Management Controller status and global enables" },
-	{ ipmi_mc_main,      "bmc",     NULL },	/* for backwards compatibility */
-	{ ipmi_sdr_main,     "sdr",     "Print Sensor Data Repository entries and readings" },
-	{ ipmi_sensor_main,  "sensor",  "Print detailed sensor information" },
-	{ ipmi_fru_main,     "fru",     "Print built-in FRU and scan SDR for FRU locators" },
-	{ ipmi_gendev_main,  "gendev",  "Read/Write Device associated with Generic Device locators sdr" },
-	{ ipmi_sel_main,     "sel",     "Print System Event Log (SEL)" },
-	{ ipmi_pef_main,     "pef",     "Configure Platform Event Filtering (PEF)" },
-	{ ipmi_sol_main,     "sol",     "Configure and connect IPMIv2.0 Serial-over-LAN" },
-	{ ipmi_tsol_main,    "tsol",    "Configure and connect with Tyan IPMIv1.5 Serial-over-LAN" },
-	{ ipmi_isol_main,    "isol",    "Configure IPMIv1.5 Serial-over-LAN" },
-	{ ipmi_user_main,    "user",    "Configure Management Controller users" },
-	{ ipmi_channel_main, "channel", "Configure Management Controller channels" },
-	{ ipmi_session_main, "session", "Print session information" },
+    { ipmi_raw_main,     "raw",     "Send a RAW IPMI request and print response" },
+    { ipmi_rawi2c_main,  "i2c",     "Send an I2C Master Write-Read command and print response" },
+    { ipmi_rawspd_main,  "spd",     "Print SPD info from remote I2C device" },
+    { ipmi_lanp_main,    "lan",     "Configure LAN Channels" },
+    { ipmi_chassis_main, "chassis", "Get chassis status and set power state" },
+    { ipmi_power_main,   "power",   "Shortcut to chassis power commands" },
+    { ipmi_event_main,   "event",   "Send pre-defined events to MC" },
+    { ipmi_mc_main,      "mc",      "Management Controller status and global enables" },
+    { ipmi_mc_main,      "bmc",     NULL },	/* for backwards compatibility */
+    { ipmi_sdr_main,     "sdr",     "Print Sensor Data Repository entries and readings" },
+    { ipmi_sensor_main,  "sensor",  "Print detailed sensor information" },
+    { ipmi_fru_main,     "fru",     "Print built-in FRU and scan SDR for FRU locators" },
+    { ipmi_gendev_main,  "gendev",  "Read/Write Device associated with Generic Device locators sdr" },
+    { ipmi_sel_main,     "sel",     "Print System Event Log (SEL)" },
+    { ipmi_pef_main,     "pef",     "Configure Platform Event Filtering (PEF)" },
+    { ipmi_sol_main,     "sol",     "Configure and connect IPMIv2.0 Serial-over-LAN" },
+    { ipmi_tsol_main,    "tsol",    "Configure and connect with Tyan IPMIv1.5 Serial-over-LAN" },
+    { ipmi_isol_main,    "isol",    "Configure IPMIv1.5 Serial-over-LAN" },
+    { ipmi_user_main,    "user",    "Configure Management Controller users" },
+    { ipmi_channel_main, "channel", "Configure Management Controller channels" },
+    { ipmi_session_main, "session", "Print session information" },
     { ipmi_dcmi_main,    "dcmi",    "Data Center Management Interface"},
-	{ ipmi_sunoem_main,  "sunoem",  "OEM Commands for Sun servers" },
-	{ ipmi_kontronoem_main, "kontronoem", "OEM Commands for Kontron devices"},
-	{ ipmi_picmg_main,   "picmg",   "Run a PICMG/ATCA extended cmd"},
-	{ ipmi_fwum_main,    "fwum",	"Update IPMC using Kontron OEM Firmware Update Manager" },
-	{ ipmi_firewall_main,"firewall","Configure Firmware Firewall" },
-	{ ipmi_delloem_main, "delloem", "OEM Commands for Dell systems" },
-	{ ipmi_hpmfwupg_main,"hpm", "Update HPM components using PICMG HPM.1 file"},
-	{ ipmi_ekanalyzer_main,"ekanalyzer", "run FRU-Ekeying analyzer using FRU files"},
-	{ ipmi_ime_main,     "ime", "Update Intel Manageability Engine Firmware"},
-	{ NULL },
+    { ipmi_sunoem_main,  "sunoem",  "OEM Commands for Sun servers" },
+    { ipmi_kontronoem_main, "kontronoem", "OEM Commands for Kontron devices"},
+    { ipmi_picmg_main,   "picmg",   "Run a PICMG/ATCA extended cmd"},
+    { ipmi_fwum_main,    "fwum",	"Update IPMC using Kontron OEM Firmware Update Manager" },
+    { ipmi_firewall_main,"firewall","Configure Firmware Firewall" },
+    { ipmi_delloem_main, "delloem", "OEM Commands for Dell systems" },
+    { ipmi_hpmfwupg_main,"hpm", "Update HPM components using PICMG HPM.1 file"},
+    { ipmi_ekanalyzer_main,"ekanalyzer", "run FRU-Ekeying analyzer using FRU files"},
+    { ipmi_ime_main,     "ime", "Update Intel Manageability Engine Firmware"},
+    { NULL },
 };
 
-void *intf_load(char* name)
+void *intfLoad(char* name)
 {
 	struct ipmi_intf *intf = NULL;
     if (!name)
@@ -94,7 +94,7 @@ void *intf_load(char* name)
 	return (void*)intf;
 }
 
-int intf_session_set_hostname(void* intf,char* host)
+int intfSessionSetHostname(void* intf,char* host)
 {
 	if (!intf || !host)
         return -1;
@@ -102,7 +102,7 @@ int intf_session_set_hostname(void* intf,char* host)
 	return 0;
 }
 
-int intf_session_set_username(void* intf,char* username)
+int intfSessionSetUsername(void* intf,char* username)
 {
 	if (!intf || !username)
         return -1;
@@ -110,7 +110,7 @@ int intf_session_set_username(void* intf,char* username)
 	return 0;
 }
 
-int intf_session_set_password(void* intf,char* password)
+int intfSessionSetPassword(void* intf,char* password)
 {
 	if (!intf || !password)
         return -1;
@@ -118,7 +118,7 @@ int intf_session_set_password(void* intf,char* password)
 	return 0;
 }
 
-int get_user_name(void *intf, int id, char *buf)
+int getUserName(void *intf, int id, char *buf)
 {
 	struct user_name_t un;
 	memset(&un, 0, sizeof(struct user_name_t));
@@ -132,7 +132,7 @@ int get_user_name(void *intf, int id, char *buf)
 	return -1;
 }
 
-int finish_interface(struct ipmi_intf *intf)
+int finishInterface(struct ipmi_intf *intf)
 {
     if (!intf)
         return -1;
@@ -140,7 +140,7 @@ int finish_interface(struct ipmi_intf *intf)
 	return 0;
 }
 
-struct ipmi_cmd *ipmicmd_lookup( const char *name )
+struct ipmi_cmd *ipmiCmdLookup( const char *name )
 {
     int i;
 	for (i = 0; i < sizeof(ipmitool_cmd_list) / 
@@ -155,13 +155,13 @@ struct ipmi_cmd *ipmicmd_lookup( const char *name )
 	return NULL;
 }
 
-void free_out_buffer( unsigned char *buf )
+void freeOutBuf( unsigned char *buf )
 {
     if (buf)
         free(buf);
 }
 
-unsigned char *create_out_buffer( const size_t len )
+unsigned char *createOutBuf( const size_t len )
 {
     unsigned char *buffer = (unsigned char*)malloc(len);
     if (!buffer)
@@ -175,48 +175,53 @@ unsigned char *create_out_buffer( const size_t len )
 #define F_TEMPLATE_LN \
     (sizeof(char)*strlen(F_TEMPLATE))
 
-unsigned char * run_command(struct ipmi_intf *intf, int argc, char **argv)
+unsigned char * runCommand(struct ipmi_intf *intf, int argc, char **argv)
 {
     FILE *fp = NULL;
     size_t filesz;
     fpos_t pos;
-	struct ipmi_cmd *cmd = NULL;
+    struct ipmi_cmd *cmd = NULL;
     unsigned char *buf = NULL;
     int stdout_sv = dup(fileno(stdout)),
         tmpfd, 
-        i,
+        i, argflag,
         argc_sv = 0;
-    char *argv_sv[256];
+    char **argv_sv;
     char tmpfn[F_TEMPLATE_LN];
     strncpy(tmpfn, F_TEMPLATE, F_TEMPLATE_LN);
     
     if (!intf) {
         printf("invalid interface\n");
         return NULL;
-	}
+    }
 
-    for (i=0; i<argc; i++) {
-        /* handle special options */
-        if (argv[i][0] == '-') { 
-            switch (argv[i][1]) { 
-                case 'c': csv_output = 1; break;
-                case 'v': verbose = 1; break;
-                default: break;
-            }
-        /* save the valid command args */
-        } else { 
-            argv_sv[argc_sv] = argv[i];
-            struct ipmi_cmd *entry = ipmicmd_lookup(argv[i]);
-            if (entry)
-                cmd = entry;
-            argc_sv++;
+    /* handle special options */
+    optind = 0;
+    verbose = 0;
+    csv_output = 0;
+    while ((argflag = getopt(argc, (char **)argv, "vc")) != -1) {
+        switch (argflag) {
+            case 'v': verbose++; break;
+            case 'c': csv_output = 1; break;
+            default: 
+                printf("invalid option %s\n", 
+                    argv[optind]);
+                return NULL;
         }
     }
+
+    /* handle command args and lookup the command entry */
+    argv_sv = argv + optind;
+    argc_sv = argc - optind;
+
+    cmd = ipmiCmdLookup(argv_sv[0]);
     if (!cmd) {
-        printf("command entry lookup error\n");
+        printf("command entry lookup error %s\n",
+            argv_sv[0]);
         return NULL;
     }
 
+    /* redirect stdout */
     tmpfd = mkostemp(tmpfn, O_CREAT|O_SYNC);
     if (0 > tmpfd) {
         printf("error opening tmpfile (%s)\n",
@@ -254,7 +259,7 @@ unsigned char * run_command(struct ipmi_intf *intf, int argc, char **argv)
         return NULL;
     }
 
-    buf = (char*)create_out_buffer(sizeof(char)*filesz);
+    buf = (char*)createOutBuf(sizeof(char)*filesz);
     if (!buf) {
         printf("error creating output buffer (%s)\n",
             strerror(errno));
@@ -266,6 +271,7 @@ unsigned char * run_command(struct ipmi_intf *intf, int argc, char **argv)
     if (filesz != fread(buf, 1, filesz, fp)) {
         printf("error reading buffer with size %lu\n", 
             filesz);
+        free(buf);
         buf = NULL;
     }
     if (buf)
